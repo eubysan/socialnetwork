@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+section,
+main,
+article,
+div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+article,
+div {
+  padding: 0.5rem;
+}
+
+section {
+  min-height: 100vh;
+}
+
+article {
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 22px auto;
+}
+
+input {
+  color: #262626;
+  font-size: 0.875rem;
+}
+
+input[type='text'],
+input[type='password'] {
+  padding: 0.5rem 0.4rem;
+}
+button {
+  padding: 0.4rem;
+  background-color: dodgerblue;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+}
+a {
+  text-decoration: none;
+  color: steelblue;
+}
+button:hover,
+a:hover {
+  cursor: pointer;
+}
+
+.container {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  margin: 0.5rem;
+  padding: 1rem;
+  min-width: 300px;
+}
+/* contenedor - guion - o */
+.cgo {
+  flex-direction: row;
+  align-items: center;
+}
+.guion {
+  background-color: #dbdbdb;
+  height: 1px;
+  position: relative;
+  padding: 0;
+  flex-grow: 1;
+}
+.o {
+  margin: 0 18px;
+}
