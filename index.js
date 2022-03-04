@@ -11,6 +11,7 @@ app.set('view engine', 'hbs');
 
 // definir la carpeta publica
 app.use(express.static('public'));
+// falta uncode
 
 // agregar rutas
 app.use(router);
