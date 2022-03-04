@@ -8,6 +8,7 @@ const app = express();
 // habilitar hbs
 app.engine('hbs', engine({ defaultLayout: false }));
 app.set('view engine', 'hbs');
+// pendiente configurar layout de handelbars
 
 // definir la carpeta publica
 app.use(express.static('public'));
