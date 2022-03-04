@@ -7,8 +7,9 @@ class UserController {
     console.log(users);
     return res.render('home', {
       username: 'Euby',
-      users,
-      hasUser: users.lenght > 0,
+      users: users,
+      hasUsers: users.length > 0,
+      gender: users.gender > 0,
     });
   }
 }
