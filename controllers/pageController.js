@@ -8,10 +8,5 @@ const signup = (req, res) => {
     page: 'Signup',
   });
 };
-const pageHome = (req, res) => {
-  res.render('home', {
-    page: 'Home',
-  });
-};
 
-module.exports = { pageHome, login, signup };
+module.exports = { login, signup };
