@@ -1,7 +1,9 @@
 const express = require('express');
 const { port } = require('./config');
 const { engine } = require('express-handlebars');
-const router = require('./routes');
+// importando rutas
+const userRouter = require('./routes/userRoute');
+const authRouter = require('./routes/index');
 
 const app = express();
 
@@ -12,10 +14,13 @@ app.set('view engine', 'hbs');
 
 // definir la carpeta publica
 app.use(express.static('public'));
-// falta uncode
+
+//Middleware // Transforma de x-www-form-urlencoded a Object de JS
+app.use(express.urlencoded({ extended: true }));
 
 // agregar rutas
-app.use(router);
+app.use(authRouter);
+app.use(userRouter);
 
 app.listen(port, function () {
   console.log('Server Running... http://localhost:' + port);

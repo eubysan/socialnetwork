@@ -8,5 +8,21 @@
 </head>
 <body>
     <h1>desde home</h1>
+    <p>{{username}}</p>
+
+    {{#if hasUsers }}
+    <ul>
+        {{#each users}}
+        <li class="text-green-700">
+            <div>
+                <img src="{{this.profilepic}}">
+                <p>{{this.name}} {{formatDate this.birthday}}</p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p class="text-red-500">Ningun usuario registrado</p>
+    {{/if}}
 </body>
 </html>

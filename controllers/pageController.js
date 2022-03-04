@@ -3,9 +3,9 @@ const login = (req, res) => {
     page: 'Login',
   });
 };
-const register = (req, res) => {
-  res.render('auth/register', {
-    page: 'Register',
+const signup = (req, res) => {
+  res.render('auth/signup', {
+    page: 'Signup',
   });
 };
 const pageHome = (req, res) => {
@@ -14,4 +14,4 @@ const pageHome = (req, res) => {
   });
 };
 
-module.exports = { pageHome, login, register };
+module.exports = { pageHome, login, signup };
