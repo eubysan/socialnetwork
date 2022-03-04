@@ -535,6 +535,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   right: 0px;
 }
 
+.m-10 {
+  margin: 2.5rem;
+}
+
 .-my-2 {
   margin-top: -0.5rem;
   margin-bottom: -0.5rem;
@@ -639,6 +643,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-48 {
   width: 12rem;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .min-w-full {
