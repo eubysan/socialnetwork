@@ -4,7 +4,7 @@ const { port } = require('./config');
 const { engine } = require('express-handlebars');
 // importando rutas
 const userRouter = require('./routes/userRoute');
-const authRouter = require('./routes/index');
+const authRouter = require('./routes/authRoute');
 
 const app = express();
 

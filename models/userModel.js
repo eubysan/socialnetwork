@@ -43,6 +43,21 @@ class User {
   async delete() {
     const user = await del('users', this.idUser);
   }
+
+  validate(){
+    let result = {success: true, errors:[]}
+    if(!(this.name && this.username && this.email && this.password && this.passwordRepeat)){
+      result.success = false,
+      result.errors.push('Rellene los campos')
+    }
+
+    if(this.password !== this.passwordRepeat){
+      result.success = false,
+      result.errors.push('Las contraseña no coinciden')
+    }
+
+    return result;
+  }
 }
 
 module.exports = User;

@@ -29,7 +29,6 @@ async function insert(tableName, data) {
       Object.keys(data),
       Object.values(data),
     ]);
-    console.log(result);
     return result.insertId;
   } catch (error) {
     return { error, success: false };
