@@ -20,14 +20,13 @@ app.engine(
   'hbs',
   engine({
     extname: 'hbs',
-    // layoutsDir:"templates",
     partialsDir: path.join(__dirname, 'views', 'components'),
-    // helpers: {
-    //   formatDate: function (date) {
-    //     const newDate = new DateTime(date);
-    //     return newDate.toFormat('yyyy-MM-dd');
-    //   },
-    // },
+    helpers: {
+      formatDate: function (date) {
+        const newDate = new DateTime(date);
+        return newDate.toFormat('yyyy-MM-dd');
+      },
+    },
   })
 );
 

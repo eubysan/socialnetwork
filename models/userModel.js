@@ -22,7 +22,6 @@ class User {
       gender: this.gender,
       email: this.email,
       password: this.password,
-      profilpic: this.profilpic,
     });
     this.idUser = newUser;
   }
@@ -44,16 +43,23 @@ class User {
     const user = await del('users', this.idUser);
   }
 
-  validate(){
-    let result = {success: true, errors:[]}
-    if(!(this.name && this.username && this.email && this.password && this.passwordRepeat)){
-      result.success = false,
-      result.errors.push('Rellene los campos')
+  validate() {
+    let result = { success: true, errors: [] };
+    if (
+      !(
+        this.name &&
+        this.username &&
+        this.email &&
+        this.password &&
+        this.passwordRepeat
+      )
+    ) {
+      (result.success = false), result.errors.push('Rellene los campos');
     }
 
-    if(this.password !== this.passwordRepeat){
-      result.success = false,
-      result.errors.push('Las contraseña no coinciden')
+    if (this.password !== this.passwordRepeat) {
+      (result.success = false),
+        result.errors.push('Las contraseña no coinciden');
     }
 
     return result;
