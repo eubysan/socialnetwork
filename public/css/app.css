@@ -591,6 +591,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 0.75rem;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -744,6 +748,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.375rem;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -875,6 +883,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .pr-2 {
@@ -1243,6 +1256,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:w-1\/4 {
     width: 25%;
+  }
+
+  .md\:w-1\/5 {
+    width: 20%;
   }
 
   .md\:justify-start {
