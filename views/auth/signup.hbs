@@ -37,8 +37,11 @@
                         type="date" name="date" placeholder="Fecha de nacimiento" value="{{user.birthday}}">
                 </div>
                 <div class="mt-3">
-                    <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                        type="text" name="gender" placeholder="Género" value="{{user.gender}}" required>
+                    <select class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                        type="select" name="gender" placeholder="Género" value="{{user.gender}}" required>
+                        <option value="1"> Masculino</option>
+                        <option value="0"> Femenino</option>
+                    </select>
                 </div>
                 <div class="mt-3">
                     <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
@@ -50,15 +53,14 @@
                 </div>
                 <div class="mt-3">
                     <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                        type="password"  name="passwordRepeat" placeholder="Repite Contraseña" value="{{user.passwordRepeat}}" required>
+                        type="password"  name="passwordRepeat" placeholder="Confirma Contraseña" value="{{user.passwordRepeat}}" required>
                 </div>
                 <div class="mt-3">
                     <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                         type="text"  name="profipic" placeholder="Imagen de Perfil" value="{{user.profilpic}}">
                 </div>
                 <div class="mt-3">
-                    <button class="bg-blue-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600">Iniciar
-                        sesión</button>
+                    <button class="bg-blue-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600">Registrarse</button>
                 </div>
                 <div class="mt-3 flex items-center justify-between">
                     <span class="border-b w-1/5 md:w-1/4"></span>
