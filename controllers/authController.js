@@ -9,6 +9,11 @@ class AuthController {
     return res.render('auth/signup');
   }
 
+
+  getImboxView(req,res){
+    return res.render('components/imbox')
+  }
+
   async signUp(req,res){
     const newUser = new User(req.body)
     const validation = newUser.validate()
