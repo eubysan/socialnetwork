@@ -4,7 +4,6 @@ class UserController {
   // Vista home muestra todos los usuarios
   async viewHomeUsers(req, res) {
     const users = await userModel.readAll();
-    console.log(users);
     return res.render('home', {
       username: 'Euby',
       users: users,
