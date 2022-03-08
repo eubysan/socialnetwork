@@ -2,11 +2,11 @@ const User = require("../models/userModel");
 
 class AuthController {
   getLoginView(req, res){
-    return res.render('auth/login');
+    return res.render('auth/login', {layout: 'auth.hbs'});
   }
 
   getSignupView(req, res){
-    return res.render('auth/signup');
+    return res.render('auth/signup', {layout: 'auth.hbs'});
   }
 
 
