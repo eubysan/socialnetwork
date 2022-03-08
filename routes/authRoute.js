@@ -7,5 +7,6 @@ const authController = new AuthController();
 router.get('/', authController.getLoginView);
 router.get('/signup', authController.getSignupView);
 router.post('/signup', authController.signUp);
-router.get('/imbox',authController.getImboxView)
+router.get('/imbox',authController.getImboxView);
+router.get('/newpost', authController.getNewPost);
 module.exports = router;
