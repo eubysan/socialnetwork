@@ -21,12 +21,12 @@ USE `SocialNetwork` ;
 -- Table `SocialNetwork`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SocialNetwork`.`users` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(16) NOT NULL,
+  `id` INT UNIQUE NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(16) UNIQUE NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `birthday` DATE NULL,
   `gender` TINYINT(1) NULL,
-  `email` VARCHAR(255) NULL,
+  `email` VARCHAR(255) UNIQUE NOT NULL,
   `password` VARCHAR(32) NOT NULL,
   `profilpic` VARCHAR(45) NULL DEFAULT 'user',
   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `SocialNetwork`.`users` (
 -- Table `SocialNetwork`.`posts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SocialNetwork`.`posts` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) UNIQUE NOT NULL AUTO_INCREMENT,
   `content` VARCHAR(45) NULL,
   `img` VARCHAR(45) NULL,
   `creationdate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -56,7 +56,7 @@ ENGINE = InnoDB;
 -- Table `SocialNetwork`.`friends`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SocialNetwork`.`friends` (
-  `id` INT(11) NOT NULL,
+  `id` INT(11) UNIQUE NOT NULL,
   `idMe` INT(11) NOT NULL,
   `idFriend` INT(11) NOT NULL,
   `accept` TINYINT(1) NOT NULL DEFAULT 0,
@@ -80,7 +80,7 @@ ENGINE = InnoDB;
 -- Table `SocialNetwork`.`likes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SocialNetwork`.`likes` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) UNIQUE NOT NULL AUTO_INCREMENT,
   `idUser` INT(11) NOT NULL,
   `idPost` INT(11) NOT NULL,
   PRIMARY KEY (`id`, `idPost`, `idUser`),

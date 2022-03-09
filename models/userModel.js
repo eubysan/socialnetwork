@@ -24,6 +24,8 @@ class User {
       password: this.password,
     });
     this.idUser = newUser;
+    
+    return newUser
   }
   static async readAll() {
     const users = await query('SELECT * FROM users');
@@ -45,23 +47,16 @@ class User {
 
   validate() {
     let result = { success: true, errors: [] };
-    if (
-      !(
-        this.name &&
-        this.username &&
-        this.email &&
-        this.password &&
-        this.passwordRepeat
-      )
-    ) {
-      (result.success = false), result.errors.push('Rellene los campos');
+    
+    if (!(this.name &&this.username && this.email && this.password && this.passwordRepeat)){
+      result.success = false;
+      result.errors.push('Rellene los campos');
     }
 
     if (this.password !== this.passwordRepeat) {
       (result.success = false),
         result.errors.push('Las contraseña no coinciden');
     }
-
     return result;
   }
 }

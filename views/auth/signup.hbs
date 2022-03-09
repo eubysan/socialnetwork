@@ -6,6 +6,9 @@
                 style="background-image:url('https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')">
                 </div>
                 <div class="w-full p-8 lg:w-1/2">
+                    {{#each validation.errors}}
+                        <p class="bg-red-200">{{this}}</p>
+                    {{/each}}
                     <a href="#"
                         class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
                         <div class="px-4 py-3">
@@ -72,4 +75,5 @@
             </div>
         </div>
     </form>
+
 </div>

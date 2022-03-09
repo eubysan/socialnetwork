@@ -1,31 +1,35 @@
-const User = require("../models/userModel");
+const User = require('../models/userModel');
 
 class AuthController {
-  getLoginView(req, res){
-    return res.render('auth/login', {layout: 'auth.hbs'});
+  getLoginView(req, res) {
+    return res.render('auth/login', { layout: 'auth.hbs' });
   }
 
-  getSignupView(req, res){
-    return res.render('auth/signup', {layout: 'auth.hbs'});
+  getSignupView(req, res) {
+    return res.render('auth/signup', { layout: 'auth.hbs' });
   }
 
-
-  getImboxView(req,res){
-    return res.render('components/imbox')
+  getImboxView(req, res) {
+    return res.render('components/imbox');
   }
 
-  async signUp(req,res){
-    const newUser = new User(req.body)
-    const validation = newUser.validate()
-  
-    if(validation.success){
-      await newUser.create()
-      return res.redirect("/")
+  async signUp(req, res) {
+    const newUser = new User(req.body);
+    const validation = newUser.validate();
+    if (validation.success) {
+      const userSave = await newUser.create();
+      if(userSave.success){
+        return res.redirect('/');
+      }
+      validation.errors.push(userSave.error);
+      validation.success = userSave.success;
     }
-
-    return res.render("auth/signup", {validation, user:newUser})
+    return res.render('auth/signup', {
+      layout: 'auth.hbs',
+      validation,
+      user: newUser,
+    });
   }
-
 }
 
-module.exports = AuthController
+module.exports = AuthController;
