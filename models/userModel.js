@@ -50,12 +50,12 @@ class User {
     
     if (!(this.name &&this.username && this.email && this.password && this.passwordRepeat)){
       result.success = false;
-      result.errors.push('Rellene los campos');
+      result.errors.push('Por favor, rellene todos los campos');
     }
 
     if (this.password !== this.passwordRepeat) {
       (result.success = false),
-        result.errors.push('Las contraseña no coinciden');
+        result.errors.push('La contraseña no coincide');
     }
     return result;
   }
