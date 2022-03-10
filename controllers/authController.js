@@ -19,6 +19,7 @@ class AuthController {
 
   async logIn(req, res){
     const credentials = req.body;
+    console.log(credentials)
     const userData = await User.getByEmail(credentials.email)
     if(userData.lenght === 0){
       return res.render('auth/login', {validation:{
@@ -28,7 +29,7 @@ class AuthController {
 
     if(userData[0].password!==credentials.password){
       return res.render('auth/login',{validation:{
-        errors:['Credenciales inorrectas']
+        errors:['Credenciales incorrectas']
       }})
     }
     req.session.loggedIn = true
