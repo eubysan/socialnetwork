@@ -29,7 +29,6 @@ class User {
   }
 
   static async getByEmail(email){
-    console.log(email)
     const data = await query('SELECT * FROM users WHERE email=?',[email])
     return data;
   }

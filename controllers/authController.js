@@ -19,21 +19,23 @@ class AuthController {
 
   async logIn(req, res){
     const credentials = req.body;
-    console.log(credentials)
     const userData = await User.getByEmail(credentials.email)
-    if(userData.lenght === 0){
-      return res.render('auth/login', {validation:{
-        errors:['El usuario no está registrado']
-      }})
+
+    if(userData.length === 0){
+      return res.render('auth/login', {
+        layout: 'auth.hbs',
+        validation:{errors:['El usuario no está registrado']}
+      })
     }
 
     if(userData[0].password!==credentials.password){
-      return res.render('auth/login',{validation:{
-        errors:['Credenciales incorrectas']
-      }})
+      return res.render('auth/login',{
+        layout: 'auth.hbs',
+        validation:{errors:['Credenciales incorrectas']}
+      })
     }
     req.session.loggedIn = true
-    return res.redirect('components/home')
+    return res.redirect('home')
   }
 
   async signUp(req, res) {
