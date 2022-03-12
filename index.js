@@ -7,7 +7,6 @@ const session = require("express-session")
 // importando rutas
 const userRouter = require('./routes/userRoute');
 const authRouter = require('./routes/authRoute');
-
 const app = express();
 
 // pendiente configurar layout de handelbars

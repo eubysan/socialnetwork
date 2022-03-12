@@ -741,10 +741,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 7rem;
 }
 
-.h-auto {
-  height: auto;
-}
-
 .max-h-min {
   max-height: -webkit-min-content;
   max-height: -moz-min-content;

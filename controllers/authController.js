@@ -17,6 +17,11 @@ class AuthController {
     return res.render('components/newpost')
   }
 
+  logOut(req,res){
+    req.session.destroy()
+    return res.redirect("/")
+  }
+
   async logIn(req, res){
     const credentials = req.body;
     const userData = await User.getByEmail(credentials.email)
@@ -35,6 +40,8 @@ class AuthController {
       })
     }
     req.session.loggedIn = true
+    req.session.username = userData[0].username
+    req.session.idUser = userData[0].id
     return res.redirect('home')
   }
 
