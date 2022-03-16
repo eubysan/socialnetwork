@@ -24,20 +24,28 @@ class User {
       password: this.password,
     });
     this.idUser = newUser;
-    
-    return newUser
+
+    return newUser;
   }
 
-  static async getByEmail(email){
-    const data = await query('SELECT * FROM users WHERE email=?',[email])
+  // friends
+  static async getFriendRequest(idUser) {
+    return await query(
+      'SELECT username, name, profilpic FROM friends JOIN users ON users.id=friends.idMe WHERE idFriend = ? AND status=0',
+      [idUser]
+    );
+  }
+
+  static async getByEmail(email) {
+    const data = await query('SELECT * FROM users WHERE email=?', [email]);
     return data;
   }
-
 
   static async readAll() {
     const users = await query('SELECT * FROM users');
     return users;
   }
+
   async readOne(id) {
     const user = await query('SELECT * FROM user WHERE id=' + id + ' LIMIT 1');
     return user;
@@ -54,15 +62,22 @@ class User {
 
   validate() {
     let result = { success: true, errors: [] };
-    
-    if (!(this.name &&this.username && this.email && this.password && this.passwordRepeat)){
+
+    if (
+      !(
+        this.name &&
+        this.username &&
+        this.email &&
+        this.password &&
+        this.passwordRepeat
+      )
+    ) {
       result.success = false;
       result.errors.push('Por favor, rellene todos los campos');
     }
 
     if (this.password !== this.passwordRepeat) {
-      (result.success = false),
-        result.errors.push('La contraseña no coincide');
+      (result.success = false), result.errors.push('La contraseña no coincide');
     }
     return result;
   }

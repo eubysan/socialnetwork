@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { port, secret } = require('./config');
 const { engine } = require('express-handlebars');
-const session = require("express-session")
+const session = require('express-session');
 
 // importando rutas
 const userRouter = require('./routes/userRoute');
@@ -16,12 +16,13 @@ app.use(express.static('public'));
 
 //Middleware // Transforma de x-www-form-urlencoded a Object de JS
 app.use(express.urlencoded({ extended: true }));
-app.use(session({
-  secret:secret,
-  resave:false,
-  saveUninitialized:false
-}))
-
+app.use(
+  session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.engine(
   'hbs',

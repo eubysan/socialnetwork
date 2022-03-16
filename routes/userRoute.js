@@ -5,7 +5,6 @@ const router = express.Router();
 
 // Definiendo el controlador
 const userController = new UserController();
-
 // Vista home muestra todos los usuarios
 router.get('/home', userController.viewHomeUsers);
 

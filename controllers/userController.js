@@ -4,13 +4,21 @@ class UserController {
   // Vista home muestra todos los usuarios
   async viewHomeUsers(req, res) {
     const users = await userModel.readAll();
-    return res.render('home', {
-      username: 'Euby',
+
+    let resData = {
       users: users,
       hasUsers: users.length > 0,
       gender: users.gender > 0,
-      profile: users.profilpic == 'user',
-    });
+      loggedIn: req.session.loggedIn,
+    };
+
+    if (req.session.loggedIn) {
+      const friendRequests = await userModel.getFriendRequest(req.session.id);
+      resData.friendRequests = friendRequests;
+      resData.hasFriendRequests = friendRequests.length > 0;
+    }
+    console.log(req.session);
+    return res.render('home', resData);
   }
 }
 
