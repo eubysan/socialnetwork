@@ -22,11 +22,15 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10">
-                          <img class="h-10 w-10 rounded-full" src="./img/avatar/{{this.profilpic}}.svg" alt="">
+                           {{#if profile}}
+                            <img class="h-10 w-10 rounded-full" src="./img/avatar/user.svg" alt="">
+                          {{else}}
+                            <img class="h-10 w-10 rounded-full" src="{{this.profilpic}}" alt="">
+                          {{/if}}
                         </div>
                         <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">Jane Cooper</div>
-                          <div class="text-sm text-gray-500">jane.cooper@example.com</div>
+                          <div class="text-sm font-medium text-gray-900">{{this.name}}</div>
+                          <div class="text-sm text-gray-500">{{this.email}}</div>
                         </div>
                       </div>
                     </td>

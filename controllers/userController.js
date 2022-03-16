@@ -9,6 +9,7 @@ class UserController {
       users: users,
       hasUsers: users.length > 0,
       gender: users.gender > 0,
+      profile: users.profilpic == 'user',
     });
   }
 }
