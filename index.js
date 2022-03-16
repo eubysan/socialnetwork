@@ -7,9 +7,8 @@ const session = require('express-session');
 // importando rutas
 const userRouter = require('./routes/userRoute');
 const authRouter = require('./routes/authRoute');
+const addSessionToTemplate = require('./middleware/addSessionToTemplate');
 const app = express();
-
-// pendiente configurar layout de handelbars
 
 // definir la carpeta publica
 app.use(express.static('public'));
@@ -23,6 +22,8 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+app.use(addSessionToTemplate);
 
 app.engine(
   'hbs',
