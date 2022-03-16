@@ -45,6 +45,10 @@ class User {
     const users = await query('SELECT * FROM users');
     return users;
   }
+  static async readThree() {
+    const users = await query('SELECT * FROM users LIMIT 3');
+    return users;
+  }
 
   async readOne(id) {
     const user = await query('SELECT * FROM user WHERE id=' + id + ' LIMIT 1');
