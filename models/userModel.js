@@ -46,7 +46,7 @@ class User {
     return users;
   }
   static async readThree() {
-    const users = await query('SELECT * FROM users LIMIT 3');
+    const users = await query('SELECT * FROM users ORDER BY RAND() LIMIT 3');
     return users;
   }
 
