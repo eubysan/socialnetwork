@@ -13,36 +13,37 @@ class AuthController {
     return res.render('components/imbox');
   }
 
-  getNewPost(req,res){
-    return res.render('components/newpost')
+  getNewPost(req, res) {
+    return res.render('components/newpost');
   }
 
-  logOut(req,res){
-    req.session.destroy()
-    return res.redirect("/")
+  logOut(req, res) {
+    req.session.destroy();
+    return res.redirect('/');
   }
 
-  async logIn(req, res){
+  async logIn(req, res) {
     const credentials = req.body;
-    const userData = await User.getByEmail(credentials.email)
+    const userData = await User.getByEmail(credentials.email);
 
-    if(userData.length === 0){
+    if (userData.length === 0) {
       return res.render('auth/login', {
         layout: 'auth.hbs',
-        validation:{errors:['El usuario no está registrado']}
-      })
+        validation: { errors: ['El usuario no está registrado'] },
+      });
     }
 
-    if(userData[0].password!==credentials.password){
-      return res.render('auth/login',{
+    if (userData[0].password !== credentials.password) {
+      return res.render('auth/login', {
         layout: 'auth.hbs',
-        validation:{errors:['Credenciales incorrectas']}
-      })
+        validation: { errors: ['Credenciales incorrectas'] },
+      });
     }
-    req.session.loggedIn = true
-    req.session.username = userData[0].username
-    req.session.idUser = userData[0].id
-    return res.redirect('home')
+    req.session.loggedIn = true;
+    req.session.username = userData[0].username;
+    req.session.profilpic = userData[0].profilpic;
+    req.session.idUser = userData[0].id;
+    return res.redirect('home');
   }
 
   async signUp(req, res) {
@@ -50,7 +51,7 @@ class AuthController {
     const validation = newUser.validate();
     if (validation.success) {
       const userSave = await newUser.create();
-      if(userSave.success){
+      if (userSave.success) {
         return res.redirect('/');
       }
       validation.errors.push(userSave.error);
