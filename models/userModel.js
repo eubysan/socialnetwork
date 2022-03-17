@@ -45,15 +45,13 @@ class User {
     const users = await query('SELECT * FROM users');
     return users;
   }
-  static async readThree() {
-    const users = await query('SELECT * FROM users ORDER BY RAND() LIMIT 3');
-    return users;
+  static async readThree(idUser) {
+    return await query(
+      'SELECT * FROM users WHERE id <> ? ORDER BY RAND() LIMIT 3',
+      [idUser]
+    );
   }
 
-  async readOne(id) {
-    const user = await query('SELECT * FROM user WHERE id=' + id + ' LIMIT 1');
-    return user;
-  }
   async updateOne(newUser) {
     const user = await query('UPDATE user SET ? WHERE id=?', [
       newUser,
