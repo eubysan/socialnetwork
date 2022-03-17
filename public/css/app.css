@@ -1601,6 +1601,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     left: auto;
   }
 
+  .sm\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .sm\:mx-4 {
     margin-left: 1rem;
     margin-right: 1rem;
@@ -1626,8 +1630,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: flex;
   }
 
+  .sm\:grid {
+    display: grid;
+  }
+
   .sm\:hidden {
     display: none;
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:items-center {
@@ -1644,6 +1656,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .sm\:justify-center {
     justify-content: center;
+  }
+
+  .sm\:gap-4 {
+    gap: 1rem;
   }
 
   .sm\:overflow-hidden {
