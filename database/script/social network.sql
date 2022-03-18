@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `SocialNetwork`.`users` (
   `gender` TINYINT(1) NULL,
   `email` VARCHAR(255) NULL,
   `password` VARCHAR(32) NOT NULL,
-  `profilpic` VARCHAR(245) NOT NULL DEFAULT 'user',
+  `profilpic` VARCHAR(245) NOT NULL,
   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `status` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`));

@@ -2,10 +2,16 @@ const User = require('../models/userModel');
 
 class AuthController {
   getLoginView(req, res) {
+    if(req.session.loggedIn){
+      return res.redirect('/home')
+    }
     return res.render('auth/login', { layout: 'auth.hbs' });
   }
 
   getSignupView(req, res) {
+    if(req.session.loggedIn){
+      return res.redirect('/home')
+    }
     return res.render('auth/signup', { layout: 'auth.hbs' });
   }
 
@@ -25,6 +31,7 @@ class AuthController {
   async logIn(req, res) {
     const credentials = req.body;
     const userData = await User.getByEmail(credentials.email);
+    console.log(userData);
 
     if (userData.length === 0) {
       return res.render('auth/login', {
@@ -43,6 +50,7 @@ class AuthController {
     req.session.username = userData[0].username;
     req.session.profilpic = userData[0].profilpic;
     req.session.idUser = userData[0].id;
+
     return res.redirect('home');
   }
 

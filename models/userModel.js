@@ -9,7 +9,6 @@ class User {
     this.gender = user.gender;
     this.email = user.email;
     this.password = user.password;
-    this.profilpic = user.profilpic;
     this.passwordRepeat = user.passwordRepeat;
   }
 
@@ -22,6 +21,7 @@ class User {
       gender: this.gender,
       email: this.email,
       password: this.password,
+      profilpic: 'img/avatar/user.svg'
     });
     this.idUser = newUser;
 
