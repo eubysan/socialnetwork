@@ -21,14 +21,14 @@ class User {
       gender: this.gender,
       email: this.email,
       password: this.password,
-      profilpic: 'img/avatar/user.svg'
+      profilpic: 'img/avatar/user.svg',
     });
     this.idUser = newUser;
 
     return newUser;
   }
 
-  // friends
+  // Datos del usuario al iniciar sesion
   static async getFriendRequest(idUser) {
     return await query(
       'SELECT username, name, profilpic FROM friends JOIN users ON users.id=friends.idMe WHERE idFriend = ? AND status=0',
@@ -45,11 +45,34 @@ class User {
     const users = await query('SELECT * FROM users');
     return users;
   }
-  static async readThree(idUser) {
-    return await query(
+
+  //Hacer un filtro de los usuarios para retirar a nosotros
+  static async readFilteredUser(idUser) {
+    // consulta de personas registradas
+    const people = await query(
+      'SELECT * FROM users WHERE id <> ? AND id NOT IN (SELECT users.id FROM users JOIN friends ON users.id=friends.idFriend WHERE friends.idMe=?) ORDER BY RAND()',
+      [idUser, idUser]
+    );
+    // consulta de amigos agregados
+    const friends = await query(
+      'SELECT * FROM users JOIN friends ON users.id=friends.idFriend WHERE friends.idMe = ?',
+      [idUser]
+    );
+    // vista de 3 personas registradas
+    const people3 = await query(
       'SELECT * FROM users WHERE id <> ? ORDER BY RAND() LIMIT 3',
       [idUser]
     );
+    console.log(friends);
+    return { people, friends, people3 };
+  }
+
+  // agregar amigos
+  static async addFriend(idMe, idFriend) {
+    return await query('INSERT INTO friends(idMe,idFriend) VALUES(?,?)', [
+      idMe,
+      idFriend,
+    ]);
   }
 
   async updateOne(newUser) {
